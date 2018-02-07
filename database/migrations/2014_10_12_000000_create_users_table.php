@@ -16,8 +16,8 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email', 250)->unique();
+            $table->string('email', 128)->unique();
+            $table->tinyInteger('isAdmin')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
